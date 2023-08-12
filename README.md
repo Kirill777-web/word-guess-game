@@ -43,7 +43,7 @@ N/A
 
 ## Links
 
-- This is the link of my application [GitHub pages]()
+- This is the link of my application [GitHub pages](https://kirill777-web.github.io/word-guess-game/)
 - This is the link of my [GitHub repository](https://github.com/Kirill777-web/word-guess-game)
 
 The following screenshots show the application final output:
