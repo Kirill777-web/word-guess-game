@@ -52,49 +52,55 @@ function startTimer() {
     }, 1000);
   }
 }
-
+// Function to reset the wins and losses counts
 function resetScores() {
-  wins = 0;
-  losses = 0;
-  updateWinsCount();
-  updateLossesCount();
+  wins = 0; // Reset wins count to zero
+  losses = 0; // Reset losses count to zero
+  updateWinsCount(); // Update the wins display
+  updateLossesCount(); // Update the losses display
 }
-
+// Function to reset the game after a certain delay (2 seconds)
 function resetGame() {
   setTimeout(() => {
     // Introduce a delay before resetting
-    startButton.disabled = false;
-    gameStarted = false;
-    timeLeft = 10;
-    resetGameElements();
+    startButton.disabled = false; // Enable the start button
+    gameStarted = false; // Set game status to not started
+    timeLeft = 10; // Reset the timer to 10 seconds
+    resetGameElements(); // Reset the display elements of the game
   }, 2000); // 2 seconds delay
 }
-
+// Function to reset specific game elements to their default state
 function resetGameElements() {
   updateTimerDisplay();
-  wordBlankElement.textContent = 'J _ v _ S c r_ _t';
-  secondsRem.style.display = 'block';
+  wordBlankElement.textContent = 'J _ v _ S c r_ _t'; // Set the default word to be guessed
+  secondsRem.style.display = 'block'; // Show the "seconds remaining" message after game started
 }
-
+// Function to update the timer display
 function updateTimerDisplay() {
   let seconds = timeLeft;
-  timerElement.textContent = `00:${seconds}`;
+  timerElement.textContent = `00:${seconds}`; // Display the remaining time in the format "00:seconds"
 }
-
+// Function to update the wins count display
 function updateWinsCount() {
-  winsCountElement.textContent = wins;
+  winsCountElement.textContent = wins; // Display the current wins count
 }
-
+// Function to update the losses count display
 function updateLossesCount() {
   lossesCountElement.textContent = losses;
 }
 
 // 3. Event Listeners
+// Start the timer when the start button is clicked
 startButton.addEventListener('click', startTimer);
+// Reset the scores when the reset button is clicked
+
 resetButton.addEventListener('click', resetScores);
 
+// Keydown event listener to check if the user has pressed a letter
 document.addEventListener('keydown', (event) => {
+  // Check if the game has started and if a valid character key is pressed
   if (gameStarted && event.key.match(/^[a-z]$/)) {
+    // Replace the blank "_" with the pressed key
     wordBlankElement.textContent = wordBlankElement.textContent.replace(
       '_',
       event.key
@@ -103,12 +109,10 @@ document.addEventListener('keydown', (event) => {
     if (wordBlankElement.textContent.replace(/\s/g, '') === 'JavaScript') {
       clearInterval(timerInterval); // Stop the timer
       timerElement.textContent = 'Word Guessed!'; // Display the "Word Guessed!" message
-      secondsRem.style.display = 'none';
-      // wordBlankElement.textContent = '';
-
-      wins++;
-      updateWinsCount();
-      resetGame();
+      secondsRem.style.display = 'none'; // Hide the "seconds remaining" message
+      wins++; //Increment the wins count
+      updateWinsCount(); // Update the wins display
+      resetGame(); // Reset the game for the next round
     }
   }
 });
