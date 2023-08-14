@@ -39,7 +39,7 @@ function startTimer() {
         //This line checks if the word displayed isn't "JavaScript".
         if (wordBlankElement.textContent.replace(/\s/g, '') !== 'JavaScript') {
           //These lines update the UI to show "Word Not Guessed!", hide the "seconds remaining" message, increment the losses by 1, and then update the displayed losses count.
-          timerElement.textContent = 'Word Not Guessed!';
+          wordBlankElement.textContent = 'Word Not Guessed!';
           secondsRem.style.display = 'none';
           losses++;
           updateLossesCount();
@@ -108,7 +108,7 @@ document.addEventListener('keydown', (event) => {
     // Check if the word is fully guessed
     if (wordBlankElement.textContent.replace(/\s/g, '') === 'JavaScript') {
       clearInterval(timerInterval); // Stop the timer
-      timerElement.textContent = 'Word Guessed!'; // Display the "Word Guessed!" message
+      wordBlankElement.textContent = 'YOU WIN!'; // Display the "Word Guessed!" message
       secondsRem.style.display = 'none'; // Hide the "seconds remaining" message
       wins++; //Increment the wins count
       updateWinsCount(); // Update the wins display
