@@ -1,4 +1,4 @@
-# JavaScript Guess Game
+# JavaScript Guessing Word Game
 
 ## Description
 
